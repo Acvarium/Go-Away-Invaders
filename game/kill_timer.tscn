@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://p1u3n1004d2i"]
+
+[ext_resource type="Script" path="res://kill_timer.gd" id="1_7mj26"]
+
+[node name="KillTimer" type="Timer"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("1_7mj26")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

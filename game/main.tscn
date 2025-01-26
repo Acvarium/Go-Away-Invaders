@@ -1,0 +1,312 @@
+[gd_scene load_steps=25 format=3 uid="uid://dt3sswsw7n0da"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_6rhrf"]
+[ext_resource type="Script" path="res://player.gd" id="1_attr2"]
+[ext_resource type="Texture2D" uid="uid://cpb5h8ktp7vp8" path="res://sprites/Scene-2.jpg" id="2_qnxc8"]
+[ext_resource type="Script" path="res://squad.gd" id="3_dw5b2"]
+[ext_resource type="Texture2D" uid="uid://dgwt70vu62r8e" path="res://sprites/player.svg" id="4_cvea4"]
+[ext_resource type="Script" path="res://fire_point.gd" id="5_122ls"]
+[ext_resource type="Texture2D" uid="uid://1hqgvsphyni2" path="res://Screenshot from 2025-01-20 00-52-03.png" id="6_35osk"]
+[ext_resource type="Script" path="res://main_camera.gd" id="8_tgbpe"]
+[ext_resource type="FontFile" uid="uid://7785qgvgjsu7" path="res://fonts/Kode_Mono/KodeMono-VariableFont_wght.ttf" id="8_uve62"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="9_a76ia"]
+
+[sub_resource type="Gradient" id="Gradient_87r1g"]
+offsets = PackedFloat32Array(0, 0.443769)
+colors = PackedColorArray(0.62, 0.4898, 0.52669, 0.156863, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mkaik"]
+gradient = SubResource("Gradient_87r1g")
+
+[sub_resource type="Gradient" id="Gradient_ma71c"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xhs8e"]
+gradient = SubResource("Gradient_ma71c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02cdp"]
+size = Vector2(34, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u50ck"]
+size = Vector2(10, 20)
+
+[sub_resource type="Animation" id="Animation_dynn8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q2c3m"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwt6x"]
+_data = {
+"RESET": SubResource("Animation_dynn8"),
+"hit": SubResource("Animation_q2c3m")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc370"]
+size = Vector2(140, 638)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqw4h"]
+shader = ExtResource("9_a76ia")
+shader_parameter/blur_amount = 2.358
+
+[sub_resource type="FontVariation" id="FontVariation_s3jd5"]
+base_font = ExtResource("8_uve62")
+variation_embolden = 0.85
+
+[sub_resource type="FontVariation" id="FontVariation_acdg1"]
+base_font = ExtResource("8_uve62")
+variation_embolden = -0.63
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l23ml"]
+size = Vector2(841, 199)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("score_label")]
+process_mode = 3
+script = ExtResource("1_6rhrf")
+score_label = NodePath("Scores/MarginContainer/VBoxContainer/ScoreValue")
+
+[node name="BG" type="Sprite2D" parent="."]
+process_mode = 1
+modulate = Color(0.347817, 0.347817, 0.347817, 1)
+z_index = -2
+position = Vector2(290, 351.079)
+scale = Vector2(0.578331, 0.556093)
+texture = ExtResource("2_qnxc8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 1
+offset_left = 12.0
+offset_top = 608.0
+offset_right = 622.0
+offset_bottom = 1216.0
+rotation = -1.57079
+texture = SubResource("GradientTexture1D_mkaik")
+
+[node name="GradientLeft" type="TextureRect" parent="."]
+process_mode = 1
+offset_left = -504.0
+offset_top = -110.0
+offset_right = -242.0
+offset_bottom = 685.0
+texture = SubResource("GradientTexture1D_xhs8e")
+
+[node name="GradientRight" type="TextureRect" parent="."]
+process_mode = 1
+offset_left = 835.0
+offset_top = -93.0
+offset_right = 1091.0
+offset_bottom = 702.0
+texture = SubResource("GradientTexture1D_xhs8e")
+flip_h = true
+
+[node name="Effects" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+process_mode = 1
+position = Vector2(77, 558)
+script = ExtResource("1_attr2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_cvea4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_02cdp")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_u50ck")
+metadata/_edit_lock_ = true
+
+[node name="FirePoint" type="Node2D" parent="Player"]
+position = Vector2(0, -16)
+script = ExtResource("5_122ls")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_kwt6x")
+}
+
+[node name="WallLeft" type="StaticBody2D" parent="." groups=["wall"]]
+process_mode = 1
+position = Vector2(-8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(-49, 309)
+shape = SubResource("RectangleShape2D_jc370")
+
+[node name="WallRight" type="StaticBody2D" parent="." groups=["wall"]]
+process_mode = 1
+position = Vector2(738, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(-49, 309)
+shape = SubResource("RectangleShape2D_jc370")
+
+[node name="Squad" type="Node2D" parent="."]
+process_mode = 1
+script = ExtResource("3_dw5b2")
+
+[node name="EnemyPos" type="Node2D" parent="Squad"]
+position = Vector2(62, 300)
+
+[node name="EnemyYOffset" type="Node2D" parent="Squad"]
+position = Vector2(62, 256)
+
+[node name="EnemyXOffset" type="Node2D" parent="Squad"]
+position = Vector2(113, 300)
+
+[node name="Entities" type="Node2D" parent="Squad"]
+position = Vector2(0, 1)
+
+[node name="FireTimer" type="Timer" parent="Squad"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ExplosionTimer" type="Timer" parent="Squad"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ScreenshotFrom2025-01-2000-52-03" type="Sprite2D" parent="."]
+process_mode = 1
+visible = false
+self_modulate = Color(1, 1, 1, 0.231373)
+position = Vector2(0, -39)
+texture = ExtResource("6_35osk")
+centered = false
+
+[node name="BLK" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="BlackLeft" type="ColorRect" parent="BLK"]
+material = SubResource("ShaderMaterial_sqw4h")
+offset_left = -548.0
+offset_right = 13.0
+offset_bottom = 605.0
+color = Color(0, 0, 0, 0.815686)
+
+[node name="BlackRight" type="ColorRect" parent="BLK"]
+material = SubResource("ShaderMaterial_sqw4h")
+offset_left = 619.0
+offset_top = -51.0
+offset_right = 1407.0
+offset_bottom = 622.0
+color = Color(0, 0, 0, 0.815686)
+
+[node name="ColorRect3" type="ColorRect" parent="BLK"]
+offset_left = 11.0
+offset_right = 13.0
+offset_bottom = 605.0
+
+[node name="ColorRect4" type="ColorRect" parent="BLK"]
+offset_left = 619.0
+offset_right = 621.0
+offset_bottom = 605.0
+
+[node name="Scores" type="Control" parent="."]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 619.0
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Scores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scores/MarginContainer"]
+layout_mode = 2
+
+[node name="HScoreLabel" type="Label" parent="Scores/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -14
+theme_override_fonts/font = SubResource("FontVariation_s3jd5")
+theme_override_font_sizes/font_size = 35
+text = "HIGH 
+SCORE"
+horizontal_alignment = 1
+
+[node name="HScoreValue" type="Label" parent="Scores/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -14
+theme_override_fonts/font = SubResource("FontVariation_acdg1")
+theme_override_font_sizes/font_size = 35
+text = "005000"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Scores/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -14
+theme_override_fonts/font = SubResource("FontVariation_s3jd5")
+theme_override_font_sizes/font_size = 35
+text = "
+SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="Scores/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -14
+theme_override_fonts/font = SubResource("FontVariation_acdg1")
+theme_override_font_sizes/font_size = 35
+text = "000000"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Scores/MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0, 0.0465, 0.31, 0.541176)
+
+[node name="TopArea" type="Area2D" parent="."]
+process_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
+position = Vector2(366.5, -97.5)
+shape = SubResource("RectangleShape2D_l23ml")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+process_mode = 1
+anchor_mode = 0
+script = ExtResource("8_tgbpe")
+
+[connection signal="timeout" from="Squad/FireTimer" to="Squad" method="_on_fire_timer_timeout"]

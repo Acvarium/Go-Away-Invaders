@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://blfyril5w63ag"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_5g60k"]
+[ext_resource type="Texture2D" uid="uid://hce5pvaiuap6" path="res://sprites/invaders.svg" id="2_evgco"]
+[ext_resource type="Script" path="res://fire_point.gd" id="3_ykr1w"]
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_5g60k")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.215686)
+position = Vector2(7, 10)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_evgco")
+hframes = 3
+vframes = 3
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_evgco")
+hframes = 3
+vframes = 3
+metadata/_edit_lock_ = true
+
+[node name="S1" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
+polygon = PackedVector2Array(-3, -11.5, 3, -11.5, 10, -5.5, 10, 2.5, 10, 4.5, 10, 8.5, 7, 11.5, 3, 11.5, 3, 2.5, -2, 2.5, -2, 11.5, -6, 11.5, -10, 7.5, -10, -5.5)
+
+[node name="S2" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
+polygon = PackedVector2Array(-5, -13.5, 5, -13.5, 11, -3.5, 11, 6.5, 8, 12.5, -8, 12.5, -11, 6.5, -11, -3.5)
+disabled = true
+
+[node name="S3" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0, 3.5)
+polygon = PackedVector2Array(-3, -15.5, 3, -15.5, 10, -11.5, 13, -7.5, 13, 1.5, 10, 7.5, 6, 11.5, -6, 11.5, -10, 7.5, -13, 1.5, -13, -8.5, -9, -11.5)
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 16)
+target_position = Vector2(0, 150)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2(0, 27)
+script = ExtResource("3_ykr1w")
+fire_direction = 1
+speed_mult = 0.8
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = -28.0
+offset_top = 12.0
+offset_right = 28.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
