@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Go Away Invaders"
-config/tags=PackedStringArray("practice")
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=120
@@ -37,6 +36,7 @@ movie_writer/fps=120
 wall=""
 bullet=""
 player=""
+cover=""
 
 [input]
 

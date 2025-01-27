@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dt3sswsw7n0da"]
+[gd_scene load_steps=26 format=3 uid="uid://dt3sswsw7n0da"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6rhrf"]
 [ext_resource type="Script" path="res://player.gd" id="1_attr2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://main_camera.gd" id="8_tgbpe"]
 [ext_resource type="FontFile" uid="uid://7785qgvgjsu7" path="res://fonts/Kode_Mono/KodeMono-VariableFont_wght.ttf" id="8_uve62"]
 [ext_resource type="Shader" path="res://blur.gdshader" id="9_a76ia"]
+[ext_resource type="PackedScene" uid="uid://c4drgfv6i5in4" path="res://cover.tscn" id="11_pm4tq"]
 
 [sub_resource type="Gradient" id="Gradient_87r1g"]
 offsets = PackedFloat32Array(0, 0.443769)
@@ -89,6 +90,12 @@ size = Vector2(841, 199)
 process_mode = 3
 script = ExtResource("1_6rhrf")
 score_label = NodePath("Scores/MarginContainer/VBoxContainer/ScoreValue")
+
+[node name="ScreenshotFrom2025-01-2000-52-04" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.305882)
+position = Vector2(400, 309)
+texture = ExtResource("6_35osk")
 
 [node name="BG" type="Sprite2D" parent="."]
 process_mode = 1
@@ -308,5 +315,18 @@ shape = SubResource("RectangleShape2D_l23ml")
 process_mode = 1
 anchor_mode = 0
 script = ExtResource("8_tgbpe")
+
+[node name="Covers" type="Node2D" parent="."]
+
+[node name="Cover" parent="Covers" instance=ExtResource("11_pm4tq")]
+
+[node name="Cover2" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(263, 491)
+
+[node name="Cover3" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(387, 491)
+
+[node name="Cover4" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(513, 491)
 
 [connection signal="timeout" from="Squad/FireTimer" to="Squad" method="_on_fire_timer_timeout"]

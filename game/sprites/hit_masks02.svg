@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="300.00018"
-   height="254.99997"
-   viewBox="0 0 79.375047 67.468741"
+   width="299.99994"
+   height="254.99951"
+   viewBox="0 0 79.374982 67.46862"
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
@@ -26,8 +26,8 @@
      showborder="true"
      borderlayer="true"
      inkscape:zoom="1.6054687"
-     inkscape:cx="138.90024"
-     inkscape:cy="208.6618"
+     inkscape:cx="117.72263"
+     inkscape:cy="160.07786"
      inkscape:window-width="1920"
      inkscape:window-height="1003"
      inkscape:window-x="1920"
@@ -40,7 +40,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-178.20368,-77.48844)">
+     transform="translate(-178.20371,-77.48848)">
+    <g
+       id="g4"
+       style="opacity:0">
+      <path
+         d="m 178.20371,77.48848 v 22.48954 h 26.45832 V 77.48848 Z"
+         style="opacity:0.418574;fill:#0000ff;stroke-width:3.00001;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
+         id="path2" />
+      <g
+         id="g3">
+        <path
+           d="m 178.20371,122.46756 v 22.48954 h 26.45832 v -22.48954 z"
+           style="opacity:0.418574;fill:#0000ff;stroke-width:3.00001;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
+           id="path51" />
+      </g>
+      <path
+         d="m 178.20371,99.97802 v 22.48954 h 26.45832 V 99.97802 Z"
+         style="opacity:0.418574;fill:#0000ff;stroke-width:3.00001;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
+         id="path3" />
+    </g>
     <path
        d="m 204.66203,78.05208 a 6.7369346,5.7263907 0 0 0 -1.9732,1.11357 l -22.51197,19.13516 a 6.7369318,5.7263883 0 0 0 -1.31855,1.67721 h 25.80372 z"
        style="fill:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
@@ -62,7 +81,7 @@
     <path
        id="path74"
        style="fill:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
-       d="m 204.66203,126.14636 c -0.72086,0.26797 -1.38093,0.6412 -1.95027,1.10277 l -11.27942,9.60185 1e-5,1.12101 v 4.15065 h 1.65416 1.65313 v -1.30896 c 2.2e-4,-0.7763 0.74087,-1.40528 1.65416,-1.40508 0.91304,9e-5 1.65343,0.62899 1.65365,1.40508 v 1.30896 h 1.65364 1.65365 v -1.30896 c 2.3e-4,-0.7763 0.74036,-1.40528 1.65365,-1.40508 h 1.65364 z m -16.53697,13.5015 -3.3073,2.8112 v 2.49804 h 1.65417 1.65313 v -1.31414 z"
+       d="m 204.66203,123.03116 c -0.72086,0.26797 -1.38093,0.6412 -1.95027,1.10277 l -11.27942,9.60185 1e-5,1.12101 v 4.15065 h 1.65416 1.65313 v -1.30896 c 2.2e-4,-0.7763 0.74087,-1.40528 1.65416,-1.40508 0.91304,9e-5 1.65343,0.62899 1.65365,1.40508 v 1.30896 h 1.65364 1.65365 v -1.30896 c 2.3e-4,-0.7763 0.74036,-1.40528 1.65365,-1.40508 h 1.65364 z m -16.53697,13.5015 -3.3073,2.8112 v 2.49804 h 1.65417 1.65313 v -1.31414 z"
        sodipodi:nodetypes="ccccccccsccccccccccccccc" />
     <path
        id="path75"

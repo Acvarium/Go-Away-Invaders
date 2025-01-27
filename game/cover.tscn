@@ -1,0 +1,165 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4drgfv6i5in4"]
+
+[ext_resource type="Texture2D" uid="uid://dq4hj4gciij88" path="res://sprites/cover_base_shape.svg" id="1_c8wsb"]
+[ext_resource type="PackedScene" uid="uid://d2284ui41twe" path="res://cover_area.tscn" id="2_6xeaq"]
+[ext_resource type="Texture2D" uid="uid://k4oaamxyycwo" path="res://sprites/hit_masks01.svg" id="3_eu3jy"]
+
+[node name="Cover" type="Sprite2D"]
+clip_children = 1
+texture_filter = 1
+position = Vector2(137, 491)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_c8wsb")
+
+[node name="CoverArea00" parent="." node_paths=PackedStringArray("lower_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(-100, -85)
+lower_block = NodePath("../CoverArea01")
+
+[node name="CollisionShape2D" parent="CoverArea00" index="1"]
+visible = true
+
+[node name="CoverArea10" parent="." node_paths=PackedStringArray("lower_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(0, -85)
+max_hits = 5
+lower_block = NodePath("../CoverArea11")
+
+[node name="CoverSprite" parent="CoverArea10" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea10" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea10" index="2"]
+visible = true
+disabled = false
+
+[node name="CoverArea20" parent="." node_paths=PackedStringArray("lower_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(100, -85)
+lower_block = NodePath("../CoverArea21")
+
+[node name="CoverSprite" parent="CoverArea20" index="0"]
+flip_h = true
+
+[node name="CollisionShape2D" parent="CoverArea20" index="1"]
+disabled = true
+
+[node name="CollisionShape2D3" parent="CoverArea20" index="3"]
+visible = true
+disabled = false
+
+[node name="CoverArea01" parent="." node_paths=PackedStringArray("upper_block", "lower_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(-100, 0)
+max_hits = 5
+upper_block = NodePath("../CoverArea00")
+lower_block = NodePath("../CoverArea02")
+
+[node name="CoverSprite" parent="CoverArea01" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea01" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea01" index="2"]
+visible = true
+disabled = false
+
+[node name="CoverArea11" parent="." node_paths=PackedStringArray("upper_block", "lower_block") instance=ExtResource("2_6xeaq")]
+max_hits = 5
+upper_block = NodePath("../CoverArea10")
+lower_block = NodePath("../CoverArea12")
+
+[node name="CoverSprite" parent="CoverArea11" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea11" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea11" index="2"]
+visible = true
+disabled = false
+
+[node name="CoverArea21" parent="." node_paths=PackedStringArray("upper_block", "lower_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(100, 0)
+max_hits = 5
+upper_block = NodePath("../CoverArea20")
+lower_block = NodePath("../CoverArea22")
+
+[node name="CoverSprite" parent="CoverArea21" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea21" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea21" index="2"]
+visible = true
+disabled = false
+
+[node name="CoverArea02" parent="." node_paths=PackedStringArray("upper_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(-100, 85)
+max_hits = 5
+upper_block = NodePath("../CoverArea01")
+
+[node name="CoverSprite" parent="CoverArea02" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea02" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea02" index="2"]
+visible = true
+disabled = false
+
+[node name="CoverArea12" parent="." node_paths=PackedStringArray("upper_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(0, 85)
+max_hits = 1
+upper_block = NodePath("../CoverArea11")
+
+[node name="CoverSprite" parent="CoverArea12" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea12" index="1"]
+disabled = true
+
+[node name="CollisionShape2D4" parent="CoverArea12" index="4"]
+visible = true
+position = Vector2(0, -29.75)
+disabled = false
+
+[node name="CoverArea22" parent="." node_paths=PackedStringArray("upper_block") instance=ExtResource("2_6xeaq")]
+position = Vector2(100, 85)
+max_hits = 1
+upper_block = NodePath("../CoverArea21")
+
+[node name="CoverSprite" parent="CoverArea22" index="0"]
+texture = ExtResource("3_eu3jy")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" parent="CoverArea22" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="CoverArea22" index="2"]
+visible = true
+disabled = false
+
+[editable path="CoverArea00"]
+[editable path="CoverArea10"]
+[editable path="CoverArea20"]
+[editable path="CoverArea01"]
+[editable path="CoverArea11"]
+[editable path="CoverArea21"]
+[editable path="CoverArea02"]
+[editable path="CoverArea12"]
+[editable path="CoverArea22"]
