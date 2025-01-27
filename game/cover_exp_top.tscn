@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://ixosq3xk53hp"]
+
+[ext_resource type="Script" path="res://enemy_exp.gd" id="1_d3f0s"]
+[ext_resource type="PackedScene" uid="uid://p1u3n1004d2i" path="res://kill_timer.tscn" id="2_45ea4"]
+[ext_resource type="Shader" path="res://black_hole.gdshader" id="3_rslb6"]
+[ext_resource type="Curve" uid="uid://db4onreba0k2d" path="res://BH_curve1.tres" id="4_x1joa"]
+[ext_resource type="Curve" uid="uid://b7hgg4nb8osqo" path="res://BH_curve2.tres" id="5_fsdr1"]
+[ext_resource type="Texture2D" uid="uid://bdcpur3ttcrv4" path="res://sprites/blk.png" id="6_jsm48"]
+[ext_resource type="Texture2D" uid="uid://cxpvmr4hq1al4" path="res://sprites/particle.svg" id="8_miowy"]
+
+[sub_resource type="Animation" id="Animation_q7kvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BH:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.475]
+}
+
+[sub_resource type="Animation" id="Animation_fgxnr"]
+resource_name = "exp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BH:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.475, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8mui"]
+_data = {
+"RESET": SubResource("Animation_q7kvm"),
+"exp": SubResource("Animation_fgxnr")
+}
+
+[sub_resource type="CurveTexture" id="CurveTexture_qwafw"]
+curve = ExtResource("4_x1joa")
+
+[sub_resource type="CurveTexture" id="CurveTexture_brjxd"]
+curve = ExtResource("5_fsdr1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n10u0"]
+shader = ExtResource("3_rslb6")
+shader_parameter/factor = 0.475
+shader_parameter/curve = SubResource("CurveTexture_qwafw")
+shader_parameter/curve2 = SubResource("CurveTexture_brjxd")
+
+[sub_resource type="Gradient" id="Gradient_wxiad"]
+offsets = PackedFloat32Array(0.146465, 0.411616, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.81, 0.5103, 0.605205, 1, 0.241156, 0.241156, 0.241156, 0)
+
+[node name="Explosion" type="Node2D"]
+position = Vector2(233, 304)
+script = ExtResource("1_d3f0s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x8mui")
+}
+autoplay = "exp"
+
+[node name="KillTimer" parent="." instance=ExtResource("2_45ea4")]
+wait_time = 1.0
+
+[node name="BH" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_n10u0")
+scale = Vector2(1.94426, 2.05175)
+texture = ExtResource("6_jsm48")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 12
+lifetime = 0.3
+explosiveness = 1.0
+texture = ExtResource("8_miowy")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 531.47
+initial_velocity_max = 800.0
+damping_min = 1000.0
+damping_max = 1000.0
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_wxiad")

@@ -14,7 +14,7 @@ const ENEMIES_GRID_AMOUNT : Vector2i = Vector2i(11, 5)
 var row_skins = [2, 2, 1, 1, 0]
 var enemy_prefab = preload("res://enemy.tscn")
 const MIN_FIRE_TIME = 0.8
-const MAX_FIRE_TIME = 3.0
+const MAX_FIRE_TIME = 2.6
 @onready var main_node = get_tree().get_root().get_node("Main")
 var start_enemies_count = 55
 var movement_pause_frames : int = 0
@@ -170,7 +170,7 @@ func enemy_fire():
 	var list_of_lowest = get_list_of_lowest()
 	var closest_enemy_id = get_closest_enemy(list_of_lowest)
 	var fire_enemy_id = closest_enemy_id
-	if randf() > 0.5:
+	if randf() > 0.7:
 		fire_enemy_id = randi_range(0, list_of_lowest.size() - 1)
 	list_of_lowest[fire_enemy_id].fire()
 

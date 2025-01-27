@@ -1,6 +1,9 @@
 extends Node2D
 var bullet_prefab = preload("res://bullet.tscn")
 var enemy_exp_prefab = preload("res://enemy_exp.tscn")
+var cover_exp_top_prefab = preload("res://cover_exp_top.tscn")
+var cover_exp_bottom_prefab = preload("res://cover_exp_bottom.tscn")
+
 var current_score : int = 0
 @export var score_label : Label
 
@@ -19,6 +22,10 @@ func spawn_effect(effect_name : String, pos : Vector2, mode_id = 0):
 		effect_instance = bullet_prefab.instantiate()
 	elif effect_name == "enemy_exp":
 		effect_instance = enemy_exp_prefab.instantiate()
+	elif effect_name == "cover_exp_top":
+		effect_instance = cover_exp_top_prefab.instantiate()
+	elif effect_name == "cover_exp_bottom":
+		effect_instance = cover_exp_bottom_prefab.instantiate()
 	if effect_instance:
 		$Effects.add_child(effect_instance)
 		effect_instance.global_position = pos

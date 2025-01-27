@@ -131,6 +131,20 @@ offset_bottom = 702.0
 texture = SubResource("GradientTexture1D_xhs8e")
 flip_h = true
 
+[node name="Covers" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Cover" parent="Covers" instance=ExtResource("11_pm4tq")]
+
+[node name="Cover2" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(263, 491)
+
+[node name="Cover3" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(387, 491)
+
+[node name="Cover4" parent="Covers" instance=ExtResource("11_pm4tq")]
+position = Vector2(513, 491)
+
 [node name="Effects" type="Node2D" parent="."]
 process_mode = 1
 
@@ -194,7 +208,7 @@ position = Vector2(113, 300)
 position = Vector2(0, 1)
 
 [node name="FireTimer" type="Timer" parent="Squad"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -315,18 +329,5 @@ shape = SubResource("RectangleShape2D_l23ml")
 process_mode = 1
 anchor_mode = 0
 script = ExtResource("8_tgbpe")
-
-[node name="Covers" type="Node2D" parent="."]
-
-[node name="Cover" parent="Covers" instance=ExtResource("11_pm4tq")]
-
-[node name="Cover2" parent="Covers" instance=ExtResource("11_pm4tq")]
-position = Vector2(263, 491)
-
-[node name="Cover3" parent="Covers" instance=ExtResource("11_pm4tq")]
-position = Vector2(387, 491)
-
-[node name="Cover4" parent="Covers" instance=ExtResource("11_pm4tq")]
-position = Vector2(513, 491)
 
 [connection signal="timeout" from="Squad/FireTimer" to="Squad" method="_on_fire_timer_timeout"]

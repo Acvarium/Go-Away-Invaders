@@ -12,4 +12,5 @@ func _ready() -> void:
 
 
 func set_mode(mode_id : int):
-	$Sprite2D.frame = mode_id * 3 + 2
+	if has_node("Sprite2D"):
+		$Sprite2D.frame = mode_id * 3 + 2

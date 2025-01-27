@@ -3,6 +3,8 @@ extends Area2D
 var hits = 0
 @export var upper_block : Area2D
 @export var lower_block : Area2D
+@onready var main_node = get_tree().get_root().get_node("Main")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,16 @@ func update_frame(dir):
 	if next_frame < h_frames * v_frames:
 		$CoverSprite.frame = next_frame
 
+func distroy():
+	queue_free()
+
+
+func spawn_exp_effect(dir):
+	if dir > 0:
+		main_node.spawn_effect("cover_exp_top", global_position)
+	else:
+		main_node.spawn_effect("cover_exp_bottom", global_position)
+		
 
 func hit(dir):
 	hits += 1
@@ -36,3 +48,4 @@ func hit(dir):
 		queue_free()
 	else:
 		update_frame(dir)
+		spawn_exp_effect(dir)
