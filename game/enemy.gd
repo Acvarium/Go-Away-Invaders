@@ -123,4 +123,4 @@ func is_lowest() -> bool:
 
 func _on_area_entered(area: Area2D) -> void:
 	if is_instance_valid(area) and area.is_in_group("cover"):
-		area.distroy()
+		area.destroy()

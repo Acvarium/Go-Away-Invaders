@@ -27,7 +27,7 @@ func update_frame(dir):
 	if next_frame < h_frames * v_frames:
 		$CoverSprite.frame = next_frame
 
-func distroy():
+func destroy():
 	queue_free()
 
 
