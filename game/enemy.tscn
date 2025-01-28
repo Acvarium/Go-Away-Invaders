@@ -53,6 +53,7 @@ position = Vector2(0, 27)
 script = ExtResource("3_ykr1w")
 fire_direction = 1
 speed_mult = 0.8
+sound_effect_name = "enemy_blaster_sound"
 
 [node name="Label" type="Label" parent="."]
 self_modulate = Color(1, 0, 0, 1)

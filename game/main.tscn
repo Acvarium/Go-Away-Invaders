@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dt3sswsw7n0da"]
+[gd_scene load_steps=28 format=3 uid="uid://dt3sswsw7n0da"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6rhrf"]
 [ext_resource type="Script" path="res://player.gd" id="1_attr2"]
@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dgwt70vu62r8e" path="res://sprites/player.svg" id="4_cvea4"]
 [ext_resource type="Script" path="res://fire_point.gd" id="5_122ls"]
 [ext_resource type="Texture2D" uid="uid://1hqgvsphyni2" path="res://Screenshot from 2025-01-20 00-52-03.png" id="6_35osk"]
+[ext_resource type="AudioStream" uid="uid://yscwsd7aukdi" path="res://sounds/blaster-3.wav" id="8_ajvme"]
 [ext_resource type="Script" path="res://main_camera.gd" id="8_tgbpe"]
 [ext_resource type="FontFile" uid="uid://7785qgvgjsu7" path="res://fonts/Kode_Mono/KodeMono-VariableFont_wght.ttf" id="8_uve62"]
-[ext_resource type="Shader" path="res://blur.gdshader" id="9_a76ia"]
+[ext_resource type="Script" path="res://sound_randomizer.gd" id="9_0sprs"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="9_a76ia"]
 [ext_resource type="PackedScene" uid="uid://c4drgfv6i5in4" path="res://cover.tscn" id="11_pm4tq"]
 
 [sub_resource type="Gradient" id="Gradient_87r1g"]
@@ -169,6 +171,11 @@ metadata/_edit_lock_ = true
 [node name="FirePoint" type="Node2D" parent="Player"]
 position = Vector2(0, -16)
 script = ExtResource("5_122ls")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Player/FirePoint"]
+position = Vector2(0, 16)
+stream = ExtResource("8_ajvme")
+script = ExtResource("9_0sprs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {

@@ -1,5 +1,4 @@
 extends CharacterBody2D
-var bullet_prefab = preload("res://bullet.tscn")
 @onready var main_node = get_tree().get_root().get_node("Main")
 const SPEED = 300.0
 var current_bullet : WeakRef
@@ -28,3 +27,6 @@ func _physics_process(delta: float) -> void:
 
 func hit():
 	$AnimationPlayer.play("hit")
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	main_node.pause_game()

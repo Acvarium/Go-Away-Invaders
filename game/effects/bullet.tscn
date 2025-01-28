@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://busvfk5hjwk6v"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_m1k2n"]
-[ext_resource type="Texture2D" uid="uid://d2lxy3swhax5a" path="res://sprites/projectile.svg" id="2_7x7q5"]
-[ext_resource type="PackedScene" uid="uid://p1u3n1004d2i" path="res://kill_timer.tscn" id="3_tyoci"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_3fb5y"]
+[ext_resource type="Texture2D" uid="uid://d2lxy3swhax5a" path="res://sprites/projectile.svg" id="2_easp2"]
+[ext_resource type="PackedScene" uid="uid://p1u3n1004d2i" path="res://kill_timer.tscn" id="3_7b6uc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3wxs"]
 size = Vector2(6, 26)
@@ -82,11 +82,11 @@ _data = {
 }
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
-script = ExtResource("1_m1k2n")
+script = ExtResource("1_3fb5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_7x7q5")
+texture = ExtResource("2_easp2")
 hframes = 4
 vframes = 3
 metadata/_edit_lock_ = true
@@ -95,7 +95,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_s3wxs")
 metadata/_edit_lock_ = true
 
-[node name="KillTimer" parent="." instance=ExtResource("3_tyoci")]
+[node name="KillTimer" parent="." instance=ExtResource("3_7b6uc")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

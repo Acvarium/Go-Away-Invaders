@@ -1,8 +1,12 @@
 extends Node2D
-var bullet_prefab = preload("res://bullet.tscn")
-var enemy_exp_prefab = preload("res://enemy_exp.tscn")
-var cover_exp_top_prefab = preload("res://cover_exp_top.tscn")
-var cover_exp_bottom_prefab = preload("res://cover_exp_bottom.tscn")
+var effects = {
+	
+"bullet" : preload("res://effects/bullet.tscn"),
+"enemy_exp" : preload("res://effects/enemy_exp.tscn"),
+"cover_exp_top" : preload("res://effects/cover_exp_top.tscn"),
+"cover_exp_bottom" : preload("res://effects/cover_exp_bottom.tscn"),
+"enemy_blaster_sound" : preload("res://effects/enemy_blaster_sound.tscn")
+}
 
 var current_score : int = 0
 @export var score_label : Label
@@ -18,14 +22,8 @@ func get_player_position():
 
 func spawn_effect(effect_name : String, pos : Vector2, mode_id = 0):
 	var effect_instance
-	if effect_name == "bullet":
-		effect_instance = bullet_prefab.instantiate()
-	elif effect_name == "enemy_exp":
-		effect_instance = enemy_exp_prefab.instantiate()
-	elif effect_name == "cover_exp_top":
-		effect_instance = cover_exp_top_prefab.instantiate()
-	elif effect_name == "cover_exp_bottom":
-		effect_instance = cover_exp_bottom_prefab.instantiate()
+	if effect_name in effects.keys():
+		effect_instance = effects[effect_name].instantiate()
 	if effect_instance:
 		$Effects.add_child(effect_instance)
 		effect_instance.global_position = pos
@@ -45,6 +43,14 @@ func update_score_view():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		get_tree().paused = !get_tree().paused
+		toggle_pause()
 	elif event.is_action_pressed("restart"):
 		restart_game()
+
+
+func toggle_pause():
+	pause_game(!get_tree().paused)
+
+
+func pause_game(to_pause : bool = true):
+	get_tree().paused = to_pause

@@ -41,10 +41,15 @@ func spawn_exp_effect(dir):
 func hit(dir):
 	hits += 1
 	if hits >= max_hits:
+		var hit_neighbor = false
 		if dir > 0 and lower_block and is_instance_valid(lower_block):
 			lower_block.hit(dir)
+			hit_neighbor = true
 		elif dir < 0 and upper_block and is_instance_valid(upper_block):
 			upper_block.hit(dir)
+			hit_neighbor = true
+		if !hit_neighbor:
+			spawn_exp_effect(dir)
 		queue_free()
 	else:
 		update_frame(dir)

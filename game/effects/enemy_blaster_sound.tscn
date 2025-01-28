@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://fp045wao83om"]
+
+[ext_resource type="AudioStream" uid="uid://coby0y6sxeukw" path="res://sounds/small-blaster-shot-01.wav" id="1_ggs54"]
+[ext_resource type="PackedScene" uid="uid://p1u3n1004d2i" path="res://kill_timer.tscn" id="2_a207b"]
+[ext_resource type="Script" path="res://sound_randomizer.gd" id="2_gdst5"]
+
+[node name="EnemyBlasterSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ggs54")
+autoplay = true
+script = ExtResource("2_gdst5")
+play_on_start = true
+
+[node name="KillTimer" parent="." instance=ExtResource("2_a207b")]
